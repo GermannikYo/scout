@@ -1,0 +1,19 @@
+Домен: https://google.com/search?q=hello
+IPV4: 173.194.222.102
+
+Открытые порты: 80, 443
+*Просканированные порты: 20, 21, 22, 23, 25, 53, 69, 80, 110, 123, 143, 156, 443, 465, 993, 3389, 5432, 5900, 7071, 9090
+
+Информация WatchWeb:
+
+https://google.com/search?q=hello [301 Moved Permanently] Country[UNITED STATES][US],
+ HTTPServer[gws],
+ IP[142.250.115.138],
+ RedirectLocation[https://www.google.com/search?q=hello],
+ Title[301 Moved],
+ UncommonHeaders[alt-svc],
+ X-Frame-Options[SAMEORIGIN],
+ X-XSS-Protection[0]
+
+
+		

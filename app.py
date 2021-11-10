@@ -1,13 +1,13 @@
 import requests
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-import lxml
 from colorama import Fore, init
 init()
 GRAY = Fore.LIGHTBLACK_EX
 GREEN = Fore.GREEN
 CYAN = Fore.CYAN
 WHITE = Fore.WHITE
+RED = Fore.RED
 
 fua = lambda : UserAgent().random
 print(f'{GREEN}Разведчик (by German){WHITE}\n')
@@ -54,7 +54,7 @@ for port in ports:
 	'user-agent': fua()
 	}
 	response = requests.post(url, headers=headers, data=data)
-	if 'open' in BeautifulSoup(response.content,'lxml').find('div',{'id':'results-wrapper'}).text:
+	if 'open' in BeautifulSoup(response.content,'html.parser').find('div',{'id':'results-wrapper'}).text:
 		open_ports.append(port)
 print(f"{GRAY}Просканированные порты: {str(ports).replace('(','').replace(')','')}")
 print(f"{GREEN}Открытые порты: {str(open_ports).replace('[','').replace(']','')}")
@@ -69,7 +69,7 @@ response = requests.post(url, headers=headers, data=data)
 info = response.text.replace('&#171;','«').replace('&#187;','»').replace('],','],\n')
 print(f'{CYAN}\nИнформация WatchWeb:\n\n{info}')
 
-print(f'{WHITE}[Y] - сохранить результат разведки в файл "Info.txt"\n[Другая буква] - завершить работу')
+print(f'{GREEN}[Y]{WHITE} - сохранить результат разведки в файл "Info.txt"\n{GREEN}[Другая буква]{WHITE} - завершить работу')
 vybor = input('Ваш выбор: ')
 if vybor.lower() == 'y':
 	with open('Info.txt','w') as file:
@@ -83,3 +83,5 @@ IPV4: {ip}
 
 {info}
 		""")
+	print(f'{GREEN}Информация сохранена{WHITE}')
+print(f'{RED}Конец программы{WHITE}')
